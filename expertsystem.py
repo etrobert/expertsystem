@@ -1,5 +1,6 @@
-from system import system
+from System import System
 
 with open('file', 'r') as f:
-  s = system(f.read())
+  s = System(f.read())
   print(s.states)
+  print(s.propositions)
