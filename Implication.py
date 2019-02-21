@@ -7,9 +7,9 @@ class Implication(Proposition):
     self.b = b
 
   def get_state(self):
-    if self.a == State.FALSE or self.b == State.TRUE:
+    if self.a.get_state() == State.FALSE or self.b.get_state() == State.TRUE:
       return State.TRUE
-    if self.a == State.TRUE and self.b == State.FALSE:
+    if self.a.get_state() == State.TRUE and self.b.get_state() == State.FALSE:
       return State.FALSE
     return State.UNKNOWN
 

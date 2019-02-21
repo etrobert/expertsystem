@@ -1,6 +1,9 @@
 from Implication import Implication
+from NamedProposition import NamedProposition
 from State import State
 
 for a in list(State):
   for b in list(State):
-    print(str(a) + ' => ' + str(b) + ' = ' + str(Implication(a, b).state()))
+    imp = Implication(NamedProposition('a', a), \
+                      NamedProposition('b', b))
+    print(str(a) + ' => ' + str(b) + ' = ' + str(imp.get_state()))
