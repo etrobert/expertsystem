@@ -4,10 +4,28 @@ from State import State
 
 class System:
   def __init__(self, text_input):
+      self.named_propositions = []
       self.propositions = \
         [self.parse_proposition(line) for line in text_input.splitlines()]
 
+  def get_named_proposition(self, name):
+      prop = next((p for p in self.named_propositions if p.name == name), None)
+      if prop == None:
+        prop = NamedProposition(name)
+        self.named_propositions.append(prop)
+      return prop
+
   def parse_proposition(self, line):
       line = line.replace(' ', '')
+      if line.find('=>') == -1:
+        return self.get_named_proposition(line)
       split = line.split('=>')
-      return Implication(NamedProposition(split[0]), NamedProposition(split[1]))
+      return Implication(self.get_named_proposition(split[0]), \
+                         self.get_named_proposition(split[1]))
+
+  def solve(self):
+      updates = 1
+      while updates > 0:
+        updates = 0
+        for proposition in self.propositions:
+          updates += proposition.update_states(State.TRUE);
