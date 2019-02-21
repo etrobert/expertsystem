@@ -9,3 +9,7 @@ class Proposition(ABC):
     @abstractmethod
     def update_states(self, my_state):
         pass
+
+    @abstractmethod
+    def __repr__(self):
+        pass

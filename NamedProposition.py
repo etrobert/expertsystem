@@ -19,4 +19,4 @@ class NamedProposition(Proposition):
     return 0
 
   def __repr__(self):
-    return self.name
+    return self.name + '(' + str(self.state) + ')'
