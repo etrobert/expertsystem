@@ -3,9 +3,6 @@ from NamedProposition import NamedProposition
 from State import State
 
 class System:
-  # propositions is of type [Proposition]
-  states = {'A': State.UNKNOWN, 'B': State.TRUE}
-  
   def __init__(self, text_input):
       self.propositions = \
         [self.parse_proposition(line) for line in text_input.splitlines()]
