@@ -31,7 +31,6 @@ class Parser:
         return AndProposition(a, b)
       if op == '|':
         return OrProposition(a, b)
-      raise ParseError('Unknown operand: ' + op)
 
   def parse_proposition(self, line):
       items = line.split(' ')
@@ -41,6 +40,8 @@ class Parser:
       if not items:
         return a
       op = items.pop()
+      if not op in self.priority:
+        raise ParseError('Unknown operand: ' + op)
       return self.parse_items(a, op, items)
 
   def parse_items(self, a, op, items):
@@ -48,6 +49,8 @@ class Parser:
       if not items:
         return self.create_proposition(a, op, b)
       next_op = items.pop()
+      if not next_op in self.priority:
+        raise ParseError('Unknown operand: ' + op)
       if self.priority[op] > self.priority[next_op]:
         return self.parse_items(self.create_proposition(a, op, b), next_op, items)
       return self.create_proposition(a, op, self.parse_items(b, next_op, items))
