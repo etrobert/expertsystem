@@ -1,0 +1,2 @@
+class IncoherenceError(Exception):
+  pass

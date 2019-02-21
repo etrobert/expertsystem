@@ -13,5 +13,16 @@ class Implication(Proposition):
       return State.FALSE
     return State.UNKNOWN
 
+  def update_states(self, my_state):
+    if my_state == State.TRUE:
+      if self.a.get_state() == State.TRUE:
+        return self.b.update_states(State.TRUE)
+      if self.b.get_state() == State.FALSE:
+        return self.a.update_states(State.FALSE)
+    if my_state == State.FALSE:
+      return self.a.update_states(State.TRUE) + \
+             self.b.update_states(State.FALSE)
+    return 0
+
   def __repr__(self):
     return str(self.a) + ' => ' + str(self.b)

@@ -5,3 +5,7 @@ class Proposition(ABC):
     @abstractmethod
     def get_state(self):
         pass
+
+    @abstractmethod
+    def update_states(self, my_state):
+        pass
