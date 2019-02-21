@@ -4,6 +4,7 @@ from OrProposition import OrProposition
 from NamedProposition import NamedProposition
 from System import System
 from ParseError import ParseError
+import re
 
 class Parser:
   priority = {'=>': 0, '<=': 0, '<=>': 0, '|': 1, '&': 2}
@@ -33,6 +34,7 @@ class Parser:
         return OrProposition(a, b)
 
   def parse_proposition(self, line):
+      line = re.sub('\s+', ' ', line).strip()
       items = line.split(' ')
       items.reverse()
 
