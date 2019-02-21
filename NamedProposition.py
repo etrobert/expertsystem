@@ -5,7 +5,8 @@ class NamedProposition(Proposition):
   def __init__(self, name, state = State.UNKNOWN):
     self.name = name
     self.state = state
-  def state(self):
+
+  def get_state(self):
     return self.state
 
   def __repr__(self):

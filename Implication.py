@@ -5,7 +5,8 @@ class Implication(Proposition):
   def __init__(self, a:Proposition, b:Proposition):
     self.a = a
     self.b = b
-  def state(self):
+
+  def get_state(self):
     if self.a == State.FALSE or self.b == State.TRUE:
       return State.TRUE
     if self.a == State.TRUE and self.b == State.FALSE:

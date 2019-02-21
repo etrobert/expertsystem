@@ -3,5 +3,5 @@ from abc import ABC, abstractmethod
 
 class Proposition(ABC):
     @abstractmethod
-    def state(self):
+    def get_state(self):
         pass
