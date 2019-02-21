@@ -6,7 +6,7 @@ from System import System
 from ParseError import ParseError
 
 class Parser:
-  priority = {'=>': 0, '|': 1, '&': 2}
+  priority = {'=>': 0, '<=': 0, '<=>': 0, '|': 1, '&': 2}
   def __init__(self, text_input):
     self.text_input = text_input
   
@@ -23,6 +23,10 @@ class Parser:
   def create_proposition(self, a, op, b):
       if op == '=>':
         return Implication(a, b)
+      if op == '<=':
+        return Implication(b, a)
+      if op == '<=>':
+        return AndProposition(Implication(a, b), Implication(b, a))
       if op == '&':
         return AndProposition(a, b)
       if op == '|':
