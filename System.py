@@ -1,27 +1,9 @@
-from Implication import Implication
-from NamedProposition import NamedProposition
 from State import State
 
 class System:
-  def __init__(self, text_input):
-      self.named_propositions = []
-      self.propositions = \
-        [self.parse_proposition(line) for line in text_input.splitlines()]
-
-  def get_named_proposition(self, name):
-      prop = next((p for p in self.named_propositions if p.name == name), None)
-      if prop == None:
-        prop = NamedProposition(name)
-        self.named_propositions.append(prop)
-      return prop
-
-  def parse_proposition(self, line):
-      line = line.replace(' ', '')
-      if line.find('=>') == -1:
-        return self.get_named_proposition(line)
-      split = line.split('=>')
-      return Implication(self.get_named_proposition(split[0]), \
-                         self.get_named_proposition(split[1]))
+  def __init__(self, variables, propositions):
+      self.variables = variables
+      self.propositions = propositions
 
   def solve(self):
       updates = 1
