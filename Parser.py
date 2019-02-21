@@ -1,10 +1,11 @@
 from Implication import Implication
+from AndProposition import AndProposition
 from NamedProposition import NamedProposition
 from System import System
 from ParseError import ParseError
 
 class Parser:
-  priority = {'=>': 1}
+  priority = {'=>': 1, '&': 2}
   def __init__(self, text_input):
     self.text_input = text_input
   
@@ -21,6 +22,8 @@ class Parser:
   def create_proposition(self, a, op, b):
       if op == '=>':
         return Implication(a, b)
+      if op == '&':
+        return AndProposition(a, b)
       raise ParseError('Unknown operand: ' + op)
 
   def parse_proposition(self, line):
