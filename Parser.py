@@ -1,6 +1,6 @@
 from Implication import Implication
 from AndProposition import AndProposition
-from OrProposition import OrProposition
+from Or import Or
 from NamedProposition import NamedProposition
 from System import System
 from ParseError import ParseError
@@ -31,7 +31,7 @@ class Parser:
       if op == '&':
         return AndProposition(a, b)
       if op == '|':
-        return OrProposition(a, b)
+        return Or(a, b)
 
   def parse_proposition(self, line):
       line = re.sub('\s+', ' ', line).strip()
