@@ -1,6 +1,7 @@
 from System import System
 from Parser import Parser
 from ParseError import ParseError
+from IncoherenceError import IncoherenceError
 import sys
 
 def usage():
@@ -23,6 +24,8 @@ with open(sys.argv[1], 'r') as f:
     s.solve()
   except IncoherenceError as e:
     print('The given system has an incoherence : ' + str(e))
+    usage()
+    sys.exit()
 
   print('System to solve:')
   print(s.propositions)
