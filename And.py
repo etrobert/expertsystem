@@ -1,7 +1,7 @@
 from Proposition import Proposition
 from State import State
 
-class AndProposition(Proposition):
+class And(Proposition):
   def __init__(self, a, b):
     self.a = a
     self.b = b

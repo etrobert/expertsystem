@@ -1,5 +1,5 @@
 from Implication import Implication
-from AndProposition import AndProposition
+from And import And
 from Or import Or
 from NamedProposition import NamedProposition
 from System import System
@@ -27,9 +27,9 @@ class Parser:
       if op == '<=':
         return Implication(b, a)
       if op == '<=>':
-        return AndProposition(Implication(a, b), Implication(b, a))
+        return And(Implication(a, b), Implication(b, a))
       if op == '&':
-        return AndProposition(a, b)
+        return And(a, b)
       if op == '|':
         return Or(a, b)
 
