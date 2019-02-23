@@ -6,14 +6,16 @@ class State(Enum):
   UNKNOWN = 2
 
   def invert(self):
-      if self == State.UNKNOWN:
-        return State.UNKNOWN
-      return State(not self.value)
+    if self == State.UNKNOWN:
+      return State.UNKNOWN
+    return State(not self.value)
 
   def __and__(self, operand):
-    if self == State.UNKNOWN or operand == State.UNKNOWN:
-      return State.UNKNOWN
-    return State(self.value and operand.value)
+    if self == State.TRUE and operand == State.TRUE:
+      return State.TRUE
+    if self == State.FALSE or operand == State.FALSE:
+      return State.FALSE
+    return State.UNKNOWN
 
   def __or__(self, operand):
     if self == State.FALSE and operand == State.FALSE:
