@@ -21,6 +21,7 @@ class OrProposition(Proposition):
         return self.b.update_states(State.TRUE)
     if my_state == State.FALSE:
       return self.a.update_states(State.FALSE) + self.b.update_states(State.FALSE)
+    return 0
 
   def __repr__(self):
     return str(self.a) + ' | ' + str(self.b)
