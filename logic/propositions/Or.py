@@ -7,11 +7,7 @@ class Or(Proposition):
     self.b = b
 
   def get_state(self):
-    if self.a.get_state() == State.TRUE or self.b.get_state() == State.TRUE:
-      return State.TRUE
-    if self.a.get_state() == State.FALSE and self.b.get_state() == State.FALSE:
-      return State.FALSE
-    return State.UNKNOWN
+    return self.a.get_state() | self.b.get_state()
 
   def update_states(self, my_state):
     if my_state == State.TRUE:
