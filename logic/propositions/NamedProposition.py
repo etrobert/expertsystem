@@ -1,6 +1,6 @@
-from Proposition import Proposition
-from State import State
-from IncoherenceError import IncoherenceError
+from .Proposition import Proposition
+from .State import State
+from ..IncoherenceError import IncoherenceError
 
 class NamedProposition(Proposition):
   def __init__(self, name, state = State.UNKNOWN):

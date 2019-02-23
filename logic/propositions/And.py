@@ -1,5 +1,5 @@
-from Proposition import Proposition
-from State import State
+from .Proposition import Proposition
+from .State import State
 
 class And(Proposition):
   def __init__(self, a, b):

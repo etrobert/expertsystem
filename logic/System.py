@@ -1,4 +1,4 @@
-from State import State
+from .propositions.State import State
 
 class System:
   def __init__(self, variables, propositions):

@@ -1,8 +1,8 @@
-from Implication import Implication
-from And import And
-from Or import Or
-from NamedProposition import NamedProposition
-from System import System
+from logic.propositions.Implication import Implication
+from logic.propositions.And import And
+from logic.propositions.Or import Or
+from logic.propositions.NamedProposition import NamedProposition
+from logic.System import System
 from ParseError import ParseError
 import re
 

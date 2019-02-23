@@ -1,7 +1,7 @@
-from System import System
+from logic.System import System
+from logic.IncoherenceError import IncoherenceError
 from Parser import Parser
 from ParseError import ParseError
-from IncoherenceError import IncoherenceError
 import sys
 
 def usage():
